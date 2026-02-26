@@ -1,0 +1,64 @@
+<?php
+
+
+class Forms {
+    
+    function __construct(){} // para prevenir a duplicação do print
+    
+    function f_input($titulo, $id) {
+        ?>
+         <div class="form-group">
+            <label for="inputText3" class="col-form-label"><?php echo $titulo;?></label>
+            <input id="<?php echo $id;?>" type="text" class="form-control">
+        </div>
+        <?php 
+    }
+    
+    function abre($numero) {
+        echo "<div class='col-xl-".$numero." col-lg-".$numero." col-md-".$numero." col-sm-".$numero." col-".$numero."' style = 'float: left;'>";
+    }
+    
+    function fecha() {
+        echo "</div>";
+    }
+    
+   function f_select($titulo, $id, $mensagem, $municipios) {
+       echo "<div class='form-group'>";
+       echo "<label for='input-select'>".$titulo."</label>";
+       echo "<select class='form-control' id='".$id."'>";
+       echo "<option value=''>".$mensagem."</option>";
+       $c = count($municipios);
+       for ($i = 0; $i < $c; $i++) {
+           echo "<option value='".$municipios[$i]."'>".$municipios[$i]."</option>";
+       }
+       echo "</select></div>";
+   }
+   
+   function f_radio_simnao($titulo, $id) {
+       ?>
+         <div class="form-group">
+            <label for="inputText3" class="col-form-label"><?php echo $titulo;?></label><br>
+             <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" name="<?php echo $id;?>" class="custom-control-input" value="1"><span class="custom-control-label">Sim</span>
+            </label>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" name="<?php echo $id;?>" class="custom-control-input" value="0"><span class="custom-control-label">Não</span>
+            </label>
+        </div>
+        <?php 
+   }
+   
+   function f_radio_unico($label, $id) {
+       ?>
+             <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" name="<?php echo $id;?>" class="custom-control-input" value="<?php echo $label;?>"><span class="custom-control-label"><?php echo $label;?></span>
+            </label>
+       
+        <?php 
+   }
+    
+}
+
+
+
+?>

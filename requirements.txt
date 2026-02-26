@@ -1,0 +1,6 @@
+pdfkit
+# pypdf2==1.28.4
+pypdf2
+mysql-connector-python
+reportlab
+magic-python

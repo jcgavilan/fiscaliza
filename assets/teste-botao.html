@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Radio Buttons with Div</title>
+</head>
+<body>
+    <h1>Radio Buttons</h1>
+    <label>
+        <input type="radio" name="option1" value="YES"> YES
+        <input type="radio" name="option1" value="NO"> NO
+    </label>
+    <br>
+    <label>
+        <input type="radio" name="option2" value="YES"> YES
+        <input type="radio" name="option2" value="NO"> NO
+    </label>
+    <br>
+    <label>
+        <input type="radio" name="option3" value="YES"> YES
+        <input type="radio" name="option3" value="NO"> NO
+    </label>
+    <br>
+    <div id="allYesDiv" style="display: none;">
+        <button onclick="allYes()">All YES</button>
+    </div>
+    <div id="oneNoDiv" style="display: none;">
+        <button onclick="oneNo()">One NO</button>
+    </div>
+
+    <script>
+        function checkIfAllYesChecked() {
+            const radioButtons = document.querySelectorAll('input[type="radio"][value="YES"]');
+            for (const radioButton of radioButtons) {
+                if (!radioButton.checked) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function checkIfOneNoChecked() {
+            const radioButtons = document.querySelectorAll('input[type="radio"][value="NO"]');
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function showAllYesDiv() {
+            const allYesDiv = document.getElementById('allYesDiv');
+            allYesDiv.style.display = 'block';
+        }
+
+        function showOneNoDiv() {
+            const oneNoDiv = document.getElementById('oneNoDiv');
+            oneNoDiv.style.display = 'block';
+        }
+
+        function allYes() {
+            alert('Congratulations! You have marked all "YES" options.');
+        }
+
+        function oneNo() {
+            alert('You have selected at least one "NO" option.');
+        }
+
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        for (const radioButton of radioButtons) {
+            radioButton.addEventListener('change', function () {
+                if (checkIfAllYesChecked()) {
+                    showAllYesDiv();
+                    hideOneNoDiv();
+                } else if (checkIfOneNoChecked()) {
+                    showOneNoDiv();
+                    hideAllYesDiv();
+                } else {
+                    hideAllYesDiv();
+                    hideOneNoDiv();
+                }
+            });
+        }
+
+        function hideAllYesDiv() {
+            const allYesDiv = document.getElementById('allYesDiv');
+            allYesDiv.style.display = 'none';
+        }
+
+        function hideOneNoDiv() {
+            const oneNoDiv = document.getElementById('oneNoDiv');
+            oneNoDiv.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<input type="file" id="file-input" />
+<button id="upload-button">Upload File</button>
+
+<script>
+	document.querySelector('#upload-button').addEventListener('click', function() {
+		if(document.querySelector('#file-input').files.length == 0) {
+			alert('Error : No file selected');
+			return;
+		}
+
+		let file = document.querySelector('#file-input').files[0];
+		let allowed_mime_types = [ 'image/jpeg', 'image/png','video/mp4' ];
+		let allowed_size_mb = 2;
+	
+		if(allowed_mime_types.indexOf(file.type) == -1) {
+			alert('Error : Incorrect file type');
+			return;
+		}
+
+		if(file.size > allowed_size_mb*1024*1024*100) {
+			alert('Error : Exceeded size');
+			return;
+		}
+
+        alert('You have chosen the file ' + file.name);
+
+		let data = new FormData();
+		data.append('file', document.querySelector('#file-input').files[0]);
+
+		let request = new XMLHttpRequest();
+		request.open('POST', 'upload.php'); 
+		request.addEventListener('load', function(e) {
+			console.log(request.response);
+		});
+		request.send(data);
+	});
+</script>

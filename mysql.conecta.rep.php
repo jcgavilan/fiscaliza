@@ -2,7 +2,7 @@
 
 
 
-$link = mysqli_connect('marcus-mysql', 'kkrreemmeerr', 'krm47935687hjh7ade');
+$link = mysqli_connect('marcus-mysql', 'kremmee', 'krm479357hjh7ade');
 
 if (!$link) {
     die('Não foi possível conectar: ');
